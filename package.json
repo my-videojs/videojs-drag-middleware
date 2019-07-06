@@ -13,7 +13,7 @@
     "babel": "babel ./src --out-dir ./lib",
     "start": "md-tools start",
     "site": "md-tools build",
-    "build": "npm run clean && npm run babel && shx cp -rf src/style/*.less lib/style",
+    "build": "npm run clean && npm run babel",
     "clean": "shx rm -rf lib site && shx echo clean Done",
     "pub": "npm run build && npm publish --access public"
   },
