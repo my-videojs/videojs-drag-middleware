@@ -15,7 +15,7 @@ IE 9+
 ## 安装
 
 ```bash
-npm install videojs-drag-middleware --save
+npm install @my-videojs/videojs-drag-middleware --save
 ```
 
 ## 运行

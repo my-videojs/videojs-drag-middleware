@@ -1,5 +1,5 @@
 {
-  "name": "videojs-drag-middleware",
+  "name": "@my-videojs/videojs-drag-middleware",
   "port": "8000",
   "version": "1.0.0",
   "description": "videojs的拖拽控制中间件",
