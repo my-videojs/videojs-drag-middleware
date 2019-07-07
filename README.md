@@ -39,7 +39,7 @@ npm run site
 ```jsx
 import videojs from 'video.js'
 import 'video.js/dist/video-js.css'
-import "videojs-drag-middleware/lib"
+import "@my-videojs/videojs-drag-middleware/lib"
 
 class App extends React.Component {
   componentDidMount () {

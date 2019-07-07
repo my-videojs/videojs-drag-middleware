@@ -1,6 +1,10 @@
 {
   "root": true,
   "extends": [
-    "react"
-  ]
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  }
 }
