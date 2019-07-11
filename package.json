@@ -1,7 +1,7 @@
 {
   "name": "@my-videojs/videojs-drag-middleware",
   "port": "8000",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "videojs的拖拽控制中间件",
   "license": "MIT",
   "main": "lib/index.js",

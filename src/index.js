@@ -9,36 +9,44 @@ var dragMiddleware = function(player) {
     // +++ Alter the setCurrentTime method +++
     setCurrentTime: function setCurrentTime(ct) {
       // 超过dragTime不允许快进(允许快退)
-      if ( player.options_.dragMode === 'backward'
+      if (
+        player.options_.dragMode === 'backward'
         && player.options_.dragTime
         && ct > player.options_.dragTime
       ) {
         return player.currentTime();
       }
       // 不允许快进
-      if (player.options_.dragMode === 'backward'
+      if (
+        player.options_.dragMode === 'backward'
         && !player.options_.dragTime
-        && ct > player.currentTime()){
+        && ct > player.currentTime()
+      ) {
         return player.currentTime();
       }
-
       // 超过dragTime不允许快退(允许快进)
-      if ( player.options_.dragMode === 'forward'
+      if (
+        player.options_.dragMode === 'forward'
         && player.options_.dragTime
-        && ct > player.options_.dragTime // ct在dragTime和currentTime之间,不允许快退
+        && ct > player.options_.dragTime
         && ct < player.currentTime()
       ) {
         return player.currentTime();
       }
       // 不允许快退
-      if (player.options_.dragMode === 'forward'
+      if (
+        player.options_.dragMode === 'forward'
         && !player.options_.dragTime
         && ct < player.currentTime()
-      ){
+      ) {
         return player.currentTime();
       }
 
-      return ct
+      if (player.options_.dragMode === 'disabled') {
+        return player.currentTime();
+      }
+
+      return ct;
     }
   }
 };
