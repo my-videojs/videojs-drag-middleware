@@ -13,6 +13,7 @@ var dragMiddleware = function(player) {
         player.options_.dragMode === 'backward'
         && player.options_.dragTime
         && ct > player.options_.dragTime
+        && ct > player.currentTime()
       ) {
         return player.currentTime();
       }
