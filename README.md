@@ -50,7 +50,7 @@ class App extends React.Component {
     const videoJsOptions = {
       controls: true,
       sources: [{
-        src: '//gcdncs.101.com/v0.1/static/fish/media/ocean.mp4',
+        src: '//clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
         type: 'video/mp4'
       }],
       dragTime: 15, // 与下面的参数结合表示15秒以内能自由拖动，15秒后只能快退
