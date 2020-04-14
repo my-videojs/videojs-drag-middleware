@@ -50,11 +50,55 @@ class App extends React.Component {
     const videoJsOptions = {
       controls: true,
       sources: [{
-        src: '//clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+        src: '//gcdncs.101.com/v0.1/static/fish/media/ocean.mp4',
+        type: 'video/mp4'
+      }],
+      dragTime: 0, // 与下面的参数结合表示15秒以内能自由拖动，15秒后只能快退
+      dragMode: 'backward' // 只能快退
+    }
+    // react0.14.x data-reactid问题
+    const videoEl = document.createElement('video')
+    videoEl.className = `video-js`
+
+    node.appendChild(videoEl)
+    this.player = videojs(videoEl, {...videoJsOptions}, () => {
+      // this.player.drag()
+    })
+  }
+  componentWillUnmount () {
+    if (this.player) {
+      this.player.dispose()
+    }
+  }
+  render() {
+    return (
+       <div data-vjs-player ref={node => { this.videoWrap = node }} />
+    )
+  }
+}
+
+ReactDOM.render(<App />, mountNode);
+```
+
+```jsx
+import videojs from 'video.js'
+import 'video.js/dist/video-js.css'
+import "@my-videojs/videojs-drag-middleware/lib"
+
+class App extends React.Component {
+  componentDidMount () {
+    const node = ReactDOM.findDOMNode(this.videoWrap)
+    if (!node) {
+      return
+    }
+    const videoJsOptions = {
+      controls: true,
+      sources: [{
+        src: '//gcdncs.101.com/v0.1/static/fish/media/ocean.mp4',
         type: 'video/mp4'
       }],
       dragTime: 15, // 与下面的参数结合表示15秒以内能自由拖动，15秒后只能快退
-      dragMode: 'backward' // 只能快退
+      dragMode: 'disabled' // 只能快退
     }
     // react0.14.x data-reactid问题
     const videoEl = document.createElement('video')
@@ -85,4 +129,4 @@ ReactDOM.render(<App />, mountNode);
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | dragTime | 拖动起始时间(秒) | number | 无 |
-| dragMode | 拖动模式,分为不能拖动，只能快进，只能快退，不传表示无限制。可以和dragTime配合使用，具体可以见上面例子说明 | enum{'forward', 'backword', 'disabled'} | 无 |
+| dragMode | 拖动模式,分为不能拖动，不能快进，不传表示无限制。可以和dragTime配合使用，具体可以见上面例子说明 | enum{'backword', 'disabled'} | 无 |
