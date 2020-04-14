@@ -53,52 +53,8 @@ class App extends React.Component {
         src: '//gcdncs.101.com/v0.1/static/fish/media/ocean.mp4',
         type: 'video/mp4'
       }],
-      dragTime: 0, // 与下面的参数结合表示15秒以内能自由拖动，15秒后只能快退
-      dragMode: 'backward' // 只能快退
-    }
-    // react0.14.x data-reactid问题
-    const videoEl = document.createElement('video')
-    videoEl.className = `video-js`
-
-    node.appendChild(videoEl)
-    this.player = videojs(videoEl, {...videoJsOptions}, () => {
-      // this.player.drag()
-    })
-  }
-  componentWillUnmount () {
-    if (this.player) {
-      this.player.dispose()
-    }
-  }
-  render() {
-    return (
-       <div data-vjs-player ref={node => { this.videoWrap = node }} />
-    )
-  }
-}
-
-ReactDOM.render(<App />, mountNode);
-```
-
-```jsx
-import videojs from 'video.js'
-import 'video.js/dist/video-js.css'
-import "@my-videojs/videojs-drag-middleware/lib"
-
-class App extends React.Component {
-  componentDidMount () {
-    const node = ReactDOM.findDOMNode(this.videoWrap)
-    if (!node) {
-      return
-    }
-    const videoJsOptions = {
-      controls: true,
-      sources: [{
-        src: '//gcdncs.101.com/v0.1/static/fish/media/ocean.mp4',
-        type: 'video/mp4'
-      }],
       dragTime: 15, // 与下面的参数结合表示15秒以内能自由拖动，15秒后只能快退
-      dragMode: 'disabled' // 只能快退
+      dragMode: 'backward' // 只能快退
     }
     // react0.14.x data-reactid问题
     const videoEl = document.createElement('video')

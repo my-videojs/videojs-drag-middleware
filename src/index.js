@@ -22,7 +22,7 @@ var dragMiddleware = function(player) {
       if (
         player.options_.dragMode === 'backward'
         && player.options_.dragTime >= 0
-        && ct > dragTime
+        && Math.floor(ct) > dragTime
       ) {
         return player.currentTime();
       }
