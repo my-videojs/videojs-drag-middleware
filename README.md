@@ -49,11 +49,11 @@ class App extends React.Component {
     }
     const videoJsOptions = {
       controls: true,
+      dragMode: 'backward', // 只能快退
       sources: [{
-        src: '//clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+        src: '//gcdncs.101.com/v0.1/static/fish/media/ocean.mp4',
         type: 'video/mp4'
       }],
-      dragTime: 15, // 与下面的参数结合表示15秒以内能自由拖动，15秒后只能快退
       dragMode: 'backward' // 只能快退
     }
     // react0.14.x data-reactid问题
@@ -70,9 +70,22 @@ class App extends React.Component {
       this.player.dispose()
     }
   }
+  setDragTime = () => {
+    if (this.player) {
+      console.log(this.input.value)
+      this.player.dragTime = parseInt(this.input.value) || 0
+    } else {
+      alert('播放器未初始化完成！')
+    }
+  }
   render() {
     return (
-       <div data-vjs-player ref={node => { this.videoWrap = node }} />
+      <div>
+        <div data-vjs-player ref={node => { this.videoWrap = node }} />
+        <br />
+        <input ref={node => this.input = node} />
+        <button onClick={this.setDragTime}>动态设置可拖拽时间</button>
+      </div>
     )
   }
 }

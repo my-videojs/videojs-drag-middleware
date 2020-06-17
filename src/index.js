@@ -18,10 +18,12 @@ var dragMiddleware = function(player) {
     // player.currentTime()表示当前的播放时间， ct 表示要跳转的时间
     setCurrentTime: function setCurrentTime(ct) {
       // 超过dragTime不允许快进(允许快退)
-      const dragTime =  playedTime > player.options_.dragTime ? playedTime : player.options_.dragTime;
+      const dragTimeRes = player.dragTime || player.options_.dragTime
+      let dragTime =  playedTime > dragTimeRes ? playedTime : dragTimeRes;
+
       if (
         player.options_.dragMode === 'backward'
-        && player.options_.dragTime >= 0
+        && dragTimeRes >= 0
         && Math.floor(ct) > dragTime
       ) {
         return player.currentTime();
