@@ -51,7 +51,7 @@ class App extends React.Component {
       controls: true,
       dragMode: 'backward', // 只能快退
       sources: [{
-        src: '//gcdncs.101.com/v0.1/static/fish/media/ocean.mp4',
+        src: '//clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
         type: 'video/mp4'
       }],
       dragMode: 'backward' // 只能快退
